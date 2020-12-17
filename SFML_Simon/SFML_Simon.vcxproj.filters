@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{6b068f1b-676d-4e78-90a9-e2dab8f7209c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStateMachine">
+      <UniqueIdentifier>{e1930427-5b79-4209-bdc4-bb0bdd591db8}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GUI\Button.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine\Game.cpp">
+      <Filter>GameStateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="GameStateMachine\InputManager.cpp">
+      <Filter>GameStateMachine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GUI\Button.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine\Game.h">
+      <Filter>GameStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine\InputManager.h">
+      <Filter>GameStateMachine</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
