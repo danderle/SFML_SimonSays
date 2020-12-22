@@ -9,13 +9,13 @@ void Game::Run()
 {
     Button button1(200, 200, 200, 200);
     button1.SetColor(sf::Color::Green);
-    Button button2(200, 200, 400, 200);
-    button2.SetColor(sf::Color::Red);
-    Button button3(200, 200, 200, 400);
-    button3.SetColor(sf::Color::Blue);
-    Button button4(200, 200, 400, 400);
-    button4.SetColor(sf::Color::Yellow);
+    button1.SetMaxRGB(225, 255, 205);
+    button1.SetMinRGB(0, 255, 0);
 
+    float dt;
+    float frameTime;
+    float currentTime = clock.getElapsedTime().asSeconds();
+    float fps;
     while (gameData->Window.isOpen())
     {
         sf::Event event;
@@ -25,14 +25,22 @@ void Game::Run()
                 gameData->Window.close();
         }
 
-        gameData->Window.clear();
+        frameTime = clock.restart().asSeconds();
+        fps = 1.f / frameTime;
+        dt = frameTime / fps;
+        while (fps > 0)
+        {
+            bool hover = gameData->input.RectHover(button1.GetRect(), gameData->Window);
+            std::cout << std::boolalpha << hover << std::endl;
+            button1.SetHover(hover);
+            button1.ColorTransition(dt);
 
-        button1.Draw(gameData->Window);
-        button3.Draw(gameData->Window);
-        button4.Draw(gameData->Window);
-        button2.Draw(gameData->Window);
+            gameData->Window.clear();
+
+            button1.Draw(gameData->Window);
         
-        gameData->Window.display();
+            gameData->Window.display();
+        }
     }
 
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include <memory>
+#include <iostream>
 #include "SFML/Graphics.hpp"
+#include "InputManager.h"
 #include "Button.h"
 
 /// <summary>
@@ -9,6 +11,7 @@
 struct GameData
 {
 	sf::RenderWindow Window;
+	InputManager input;
 };
 
 /// <summary>
@@ -29,6 +32,9 @@ public:
 
 private:
 	void Setup();
+
+private:
+	sf::Clock clock;
 	std::shared_ptr<GameData> gameData = std::make_shared<GameData>();
 };
 
