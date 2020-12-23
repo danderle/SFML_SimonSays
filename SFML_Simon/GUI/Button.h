@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 /// <summary>
 /// Class represent a button
@@ -35,7 +36,18 @@ public:
 
 	void SetHover(const bool isHovering);
 
+	void SetClicked(const bool isClicked);
+
+	void StartPulse();
+
+	/// <summary>
+	/// tranistions the color when hovering
+	/// </summary>
+	/// <param name="dt"></param>
 	void ColorTransition(const float dt);
+
+	bool IsPulsing() const;
+	void Pulse(const float dt);
 
 	sf::FloatRect GetRect() const;
 
@@ -55,9 +67,14 @@ private:
 	sf::Uint8 bMax;
 
 	bool hover = false;
+	bool isClicked = false;
+	bool isPulsing = false;
+	bool increaseRgb = false;
+	bool decreaseRgb = false;
 	float colortimePassed = 0;
 
 private:
 	static constexpr float colorTransitionTimeout = 0.1f;
+	static constexpr sf::Uint8 colorSteps = 25;
 };
 
