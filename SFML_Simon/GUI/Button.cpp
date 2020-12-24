@@ -1,14 +1,25 @@
 #include "Button.h"
 
+unsigned int Button::totalIndex = 0;
+
 Button::Button(const float width, const float height, const float xPos, const float yPos)
 	: Button({width, height}, {xPos, yPos})
 {
 }
 
 Button::Button(const sf::Vector2f size, const sf::Vector2f position)
+	:
+	gMax(-1),
+	gMin(-1),
+	bMax(-1),
+	bMin(-1),
+	rMax(-1),
+	rMin(-1)
 {
 	shape.setSize(size);
 	shape.setPosition(position);
+	index = totalIndex;
+	totalIndex++;
 }
 
 void Button::SetColor(const sf::Color color)
@@ -46,6 +57,7 @@ void Button::SetClicked(const bool clicked)
 void Button::StartPulse()
 {
 	isPulsing = true;
+	isFinished = false;
 	increaseRgb = true;
 }
 
@@ -66,6 +78,11 @@ bool Button::IsPulsing() const
 	return isPulsing;
 }
 
+bool Button::IsFinished() const
+{
+	return isFinished;
+}
+
 void Button::Pulse(const float dt)
 {
 	if (isPulsing && increaseRgb)
@@ -76,6 +93,16 @@ void Button::Pulse(const float dt)
 	{
 		DecreaseRGB(dt);
 	}
+}
+
+void Button::Reset()
+{
+	isFinished = false;
+}
+
+const unsigned int Button::GetIndex() const
+{
+	return index;
 }
 
 sf::FloatRect Button::GetRect() const
@@ -93,6 +120,9 @@ void Button::Draw(sf::RenderWindow& window)
 
 void Button::IncreaseRGB(const float dt)
 {
+	assert(rMax != -1);
+	assert(gMax != -1);
+	assert(bMax != -1);
 	colortimePassed += dt;
 	if (colortimePassed >= colorTransitionTimeout)
 	{
@@ -121,6 +151,9 @@ void Button::IncreaseRGB(const float dt)
 
 void Button::DecreaseRGB(const float dt)
 {
+	assert(rMax != -1);
+	assert(gMax != -1);
+	assert(bMax != -1);
 	colortimePassed += dt;
 	if (colortimePassed >= colorTransitionTimeout)
 	{
@@ -140,6 +173,7 @@ void Button::DecreaseRGB(const float dt)
 		{
 			decreaseRgb = false;
 			isPulsing = false;
+			isFinished = true;
 		}
 		shape.setFillColor(color);
 	}

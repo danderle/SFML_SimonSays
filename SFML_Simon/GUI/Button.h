@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <cassert>
 
 /// <summary>
 /// Class represent a button
@@ -47,8 +48,11 @@ public:
 	void ColorTransition(const float dt);
 
 	bool IsPulsing() const;
+	bool IsFinished() const;
 	void Pulse(const float dt);
+	void Reset();
 
+	const unsigned int GetIndex() const;
 	sf::FloatRect GetRect() const;
 
 	void Draw(sf::RenderWindow& window);
@@ -69,12 +73,15 @@ private:
 	bool hover = false;
 	bool isClicked = false;
 	bool isPulsing = false;
+	bool isFinished = false;
 	bool increaseRgb = false;
 	bool decreaseRgb = false;
 	float colortimePassed = 0;
+	unsigned int index = 0;
 
 private:
 	static constexpr float colorTransitionTimeout = 0.1f;
 	static constexpr sf::Uint8 colorSteps = 25;
+	static unsigned int totalIndex;
 };
 
