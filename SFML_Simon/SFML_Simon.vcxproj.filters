@@ -21,6 +21,7 @@
     <ClCompile Include="GameStateMachine\InputManager.cpp">
       <Filter>GameStateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="Field.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\Button.h">
@@ -32,5 +33,6 @@
     <ClInclude Include="GameStateMachine\InputManager.h">
       <Filter>GameStateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="Field.h" />
   </ItemGroup>
 </Project>
