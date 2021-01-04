@@ -3,7 +3,8 @@
 #include <iostream>
 #include "SFML/Graphics.hpp"
 #include "InputManager.h"
-#include "Button.h"
+#include "Field.h"
+#include "Pattern.h"
 
 /// <summary>
 /// Structure represents all the available game data options
@@ -11,7 +12,7 @@
 struct GameData
 {
 	sf::RenderWindow Window;
-	InputManager input;
+	InputManager Input;
 };
 
 /// <summary>

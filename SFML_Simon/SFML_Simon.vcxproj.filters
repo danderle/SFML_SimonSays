@@ -22,6 +22,7 @@
       <Filter>GameStateMachine</Filter>
     </ClCompile>
     <ClCompile Include="Field.cpp" />
+    <ClCompile Include="Pattern.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\Button.h">
@@ -34,5 +35,6 @@
       <Filter>GameStateMachine</Filter>
     </ClInclude>
     <ClInclude Include="Field.h" />
+    <ClInclude Include="Pattern.h" />
   </ItemGroup>
 </Project>

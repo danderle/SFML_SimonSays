@@ -24,12 +24,14 @@
     <ClCompile Include="GameStateMachine\InputManager.cpp" />
     <ClCompile Include="GUI\Button.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pattern.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameStateMachine\Game.h" />
     <ClInclude Include="GameStateMachine\InputManager.h" />
     <ClInclude Include="GUI\Button.h" />
+    <ClInclude Include="Pattern.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

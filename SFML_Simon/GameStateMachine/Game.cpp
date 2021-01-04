@@ -7,10 +7,10 @@ Game::Game()
 
 void Game::Run()
 {
-    Button button1(200, 200, 200, 200);
-    button1.SetColor(sf::Color::Green);
-    button1.SetMaxRGB(225, 255, 205);
-    button1.SetMinRGB(0, 255, 0);
+    Field field(gameData->Window);
+    field.PressToPlay();
+    Pattern pattern;
+    bool adding = true;
 
     float dt;
     float frameTime;
@@ -23,6 +23,30 @@ void Game::Run()
         {
             if (event.type == sf::Event::Closed)
                 gameData->Window.close();
+            if (event.type == sf::Event::MouseButtonReleased)
+            {
+                if (!field.IsGameStarted())
+                {
+                    if (field.StartButtonPressed(gameData->Input.GetMousePosition(gameData->Window)))
+                    {
+                        pattern.AddRandom();
+                        field.SetSequence(pattern.Get());
+                    }
+                    
+                }
+                else
+                {
+                    field.EnterSequence(gameData->Input.GetMousePosition(gameData->Window));
+                }
+            }
+        }
+
+        adding = field.MathchedSequence() && !field.SomeButtonPulsing();
+        if (adding)
+        {
+            pattern.AddRandom();
+            field.SetSequence(pattern.Get());
+            adding = false;
         }
 
         frameTime = clock.restart().asSeconds();
@@ -30,27 +54,25 @@ void Game::Run()
         dt = frameTime / fps;
         while (fps > 0)
         {
-            bool hover = gameData->input.RectHover(button1.GetRect(), gameData->Window);
-            std::cout << std::boolalpha << hover << std::endl;
-            button1.SetHover(hover);
-            button1.ColorTransition(dt);
-
+            field.ShowSequence(dt);
             gameData->Window.clear();
-
-            button1.Draw(gameData->Window);
-        
+            field.Draw(gameData->Window);
             gameData->Window.display();
+            fps--;
         }
     }
 
 }
 
+//Private Functions
+
 void Game::Setup()
 {
     gameData->Window.create(sf::VideoMode(800, 800), "Simon Says!", sf::Style::Close | sf::Style::Titlebar);
-    //gameData->Window.setVerticalSyncEnabled(true);
+    gameData->Window.setVerticalSyncEnabled(true);
 
     //Set window position relative to desktop size
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
     gameData->Window.setPosition({ (int)desktop.width / 2 - (int)gameData->Window.getSize().x / 2, 0 });
+
 }

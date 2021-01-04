@@ -13,6 +13,10 @@ public:
 	Button(const float width, const float height, const float xPos, const float yPos);
 	Button(const sf::Vector2f size, const sf::Vector2f position);
 
+
+	const bool Contains(sf::Vector2f position);
+	const bool Contains(sf::Vector2i position);
+
 	/// <summary>
 	/// Set the default background color
 	/// </summary>
@@ -37,9 +41,8 @@ public:
 
 	void SetHover(const bool isHovering);
 
-	void SetClicked(const bool isClicked);
-
 	void StartPulse();
+	void StartContinousPulse();
 
 	/// <summary>
 	/// tranistions the color when hovering
@@ -63,6 +66,7 @@ private:
 
 private:
 	sf::RectangleShape shape;
+	sf::Color startingColor;
 	sf::Uint8 rMin;
 	sf::Uint8 gMin;
 	sf::Uint8 bMin;
@@ -71,7 +75,7 @@ private:
 	sf::Uint8 bMax;
 
 	bool hover = false;
-	bool isClicked = false;
+	bool continousPulse = false;
 	bool isPulsing = false;
 	bool isFinished = false;
 	bool increaseRgb = false;

@@ -22,9 +22,20 @@ Button::Button(const sf::Vector2f size, const sf::Vector2f position)
 	totalIndex++;
 }
 
+const bool Button::Contains(sf::Vector2f position)
+{
+	return shape.getGlobalBounds().contains(position);
+}
+
+const bool Button::Contains(sf::Vector2i position)
+{
+	return Contains(sf::Vector2f(position));
+}
+
 void Button::SetColor(const sf::Color color)
 {
-	shape.setFillColor(color);
+	startingColor = color;
+	shape.setFillColor(startingColor);
 }
 
 void Button::SetMinRGB(const sf::Uint8 r, const sf::Uint8 g, const sf::Uint8 b)
@@ -46,19 +57,17 @@ void Button::SetHover(const bool isHovering)
 	hover = isHovering;
 }
 
-void Button::SetClicked(const bool clicked)
-{
-	if (clicked)
-	{
-		isClicked = true;
-	}
-}
-
 void Button::StartPulse()
 {
 	isPulsing = true;
 	isFinished = false;
 	increaseRgb = true;
+}
+
+void Button::StartContinousPulse()
+{
+	continousPulse = true;
+	StartPulse();
 }
 
 void Button::ColorTransition(const float dt)
@@ -75,6 +84,7 @@ void Button::ColorTransition(const float dt)
 
 bool Button::IsPulsing() const
 {
+	//std::cout << index << " Pulsing " << std::boolalpha << isPulsing << std::endl;
 	return isPulsing;
 }
 
@@ -98,6 +108,11 @@ void Button::Pulse(const float dt)
 void Button::Reset()
 {
 	isFinished = false;
+	isPulsing = false;
+	increaseRgb = false;
+	decreaseRgb = false;
+	continousPulse = false;
+	SetColor(startingColor);
 }
 
 const unsigned int Button::GetIndex() const
@@ -140,7 +155,6 @@ void Button::IncreaseRGB(const float dt)
 			color.g == gMax &&
 			color.b == bMax)
 		{
-			isClicked = false;
 			increaseRgb = false;
 			decreaseRgb = true;
 		}
@@ -174,6 +188,12 @@ void Button::DecreaseRGB(const float dt)
 			decreaseRgb = false;
 			isPulsing = false;
 			isFinished = true;
+			if (continousPulse)
+			{
+				isFinished = false;
+				isPulsing = true;
+				increaseRgb = true;
+			}
 		}
 		shape.setFillColor(color);
 	}

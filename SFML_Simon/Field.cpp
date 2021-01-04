@@ -33,17 +33,46 @@ Field::Field(sf::RenderWindow& window)
     buttons.push_back(buttonY);
 }
 
+const bool Field::IsGameStarted() const
+{
+    return isGameStarted;
+}
+
+const bool Field::SomeButtonPulsing() const
+{
+    bool stillPulsing = false;
+    for (auto button : buttons)
+    {
+        stillPulsing = button.IsPulsing();
+        if (stillPulsing)
+        {
+            break;
+        }
+    }
+    return stillPulsing;
+}
+
+void Field::PressToPlay()
+{
+    assert(buttons.size() > 0);
+    buttons[0].StartContinousPulse();
+}
+
 void Field::ShowSequence(const float dt)
 {
-    if(sequenceRunning)
+    if(runSequence)
     {
         auto& button = buttons[sequence[sequenceIndex]];
         if (button.IsFinished())
         {
             button.Reset();
-            sequenceIndex = ++sequenceIndex < sequence.size() ? sequenceIndex : 0;
-            sequenceRunning = false;
-            enteringSequence = true;
+            sequenceIndex = ++sequenceIndex;
+            if (sequenceIndex >= sequence.size())
+            {
+                runSequence = false;
+                enteringSequence = true;
+                sequenceIndex = 0;
+            }
         }
         else if (!button.IsPulsing())
         {
@@ -56,6 +85,25 @@ void Field::ShowSequence(const float dt)
     }
 }
 
+void Field::SetSequence(const std::vector<unsigned int>& seq)
+{
+    sequence = seq;
+    runSequence = true;
+    matchedSequence = false;
+    sequenceIndex = 0;
+    ResetAllButtons();
+}
+
+const bool Field::StartButtonPressed(const sf::Vector2i mousePosition)
+{
+    if (buttons[0].Contains(mousePosition))
+    {
+        buttons[0].Reset();
+        isGameStarted = true;
+    }
+    return isGameStarted;
+}
+
 void Field::EnterSequence(const sf::Vector2i mousePosition)
 {
     if (!enteringSequence)
@@ -64,18 +112,24 @@ void Field::EnterSequence(const sf::Vector2i mousePosition)
     }
     for (auto& button : buttons)
     {
-        if (button.GetRect().contains(sf::Vector2f(mousePosition)))
+        if (button.Contains(mousePosition))
         {
+            std::cout << "You entered: " << button.GetIndex() << " Correct is: " << sequence[sequenceIndex] << std::endl;
+
+            //correct sequence
             if (sequence[sequenceIndex] == button.GetIndex())
             {
                 button.StartPulse();
                 sequenceIndex++;
-                if (sequenceIndex == sequence.size())
+                //was last in sequence
+                if (sequenceIndex >= sequence.size())
                 {
                     enteringSequence = false;
-                    sequenceRunning = true;
+                    matchedSequence = true;
+                    sequenceIndex = 0;
                 }
             }
+            //wrong sequence
             else
             {
                 for (auto& btn : buttons)
@@ -87,6 +141,19 @@ void Field::EnterSequence(const sf::Vector2i mousePosition)
             break;
         }
     }
+}
+
+void Field::ResetAllButtons()
+{
+    for (auto& button : buttons)
+    {
+        button.Reset();
+    }
+}
+
+const bool Field::MathchedSequence() const
+{
+    return matchedSequence;
 }
 
 void Field::Draw(sf::RenderWindow& window)
