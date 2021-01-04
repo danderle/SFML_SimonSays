@@ -7,8 +7,21 @@ class Pattern
 {
 public:
 	Pattern();
-	void AddRandom();
+
+	/// <summary>
+	/// Adds a new random pattern to the sequence
+	/// </summary>
+	void Add();
+	
+	/// <summary>
+	/// Cleares the entire sequence
+	/// </summary>
 	void Clear();
+
+	/// <summary>
+	/// Returns the sequence vector
+	/// </summary>
+	/// <returns></returns>
 	const std::vector<unsigned int>& Get() const;
 
 private:

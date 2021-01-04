@@ -29,7 +29,7 @@ void Game::Run()
                 {
                     if (field.StartButtonPressed(gameData->Input.GetMousePosition(gameData->Window)))
                     {
-                        pattern.AddRandom();
+                        pattern.Add();
                         field.SetSequence(pattern.Get());
                     }
                     
@@ -41,20 +41,21 @@ void Game::Run()
             }
         }
 
-        adding = field.MathchedSequence() && !field.SomeButtonPulsing();
+        adding = field.IsMathchedSequence() && !field.IsSomeButtonPulsing();
         if (adding)
         {
-            pattern.AddRandom();
+            pattern.Add();
             field.SetSequence(pattern.Get());
             adding = false;
         }
+        field.RunSequence();
 
         frameTime = clock.restart().asSeconds();
         fps = 1.f / frameTime;
         dt = frameTime / fps;
         while (fps > 0)
         {
-            field.ShowSequence(dt);
+            field.Update(dt);
             gameData->Window.clear();
             field.Draw(gameData->Window);
             gameData->Window.display();

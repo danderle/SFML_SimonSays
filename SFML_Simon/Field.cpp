@@ -38,7 +38,7 @@ const bool Field::IsGameStarted() const
     return isGameStarted;
 }
 
-const bool Field::SomeButtonPulsing() const
+const bool Field::IsSomeButtonPulsing() const
 {
     bool stillPulsing = false;
     for (auto button : buttons)
@@ -58,35 +58,36 @@ void Field::PressToPlay()
     buttons[0].StartContinousPulse();
 }
 
-void Field::ShowSequence(const float dt)
+void Field::RunSequence()
 {
-    if(runSequence)
+    if (!runSequence)
     {
-        auto& button = buttons[sequence[sequenceIndex]];
-        if (button.IsFinished())
+        return;
+    }
+    auto& button = buttons[sequence[sequenceIndex]];
+    //if button is finished pulsing, increase sequence index
+    if (button.IsFinished())
+    {
+        button.Reset();
+        sequenceIndex = ++sequenceIndex;
+        //if the end of the sequence is reached its time for the user to repeat
+        if (sequenceIndex >= sequence.size())
         {
-            button.Reset();
-            sequenceIndex = ++sequenceIndex;
-            if (sequenceIndex >= sequence.size())
-            {
-                runSequence = false;
-                enteringSequence = true;
-                sequenceIndex = 0;
-            }
-        }
-        else if (!button.IsPulsing())
-        {
-            button.StartPulse();
+            runSequence = false;
+            enteringSequence = true;
+            sequenceIndex = 0;
         }
     }
-    for (auto& button : buttons)
+    //start button pulse
+    else if (!button.IsPulsing())
     {
-        button.ColorTransition(dt);
+        button.StartPulse();
     }
 }
 
 void Field::SetSequence(const std::vector<unsigned int>& seq)
 {
+    //set the new sequence and flags to show pattern sequence to user
     sequence = seq;
     runSequence = true;
     matchedSequence = false;
@@ -96,6 +97,7 @@ void Field::SetSequence(const std::vector<unsigned int>& seq)
 
 const bool Field::StartButtonPressed(const sf::Vector2i mousePosition)
 {
+    //if game has not started and the signaling button is pressed, start the game
     if (buttons[0].Contains(mousePosition))
     {
         buttons[0].Reset();
@@ -114,7 +116,7 @@ void Field::EnterSequence(const sf::Vector2i mousePosition)
     {
         if (button.Contains(mousePosition))
         {
-            std::cout << "You entered: " << button.GetIndex() << " Correct is: " << sequence[sequenceIndex] << std::endl;
+            //std::cout << "You entered: " << button.GetIndex() << " Correct is: " << sequence[sequenceIndex] << std::endl;
 
             //correct sequence
             if (sequence[sequenceIndex] == button.GetIndex())
@@ -137,6 +139,9 @@ void Field::EnterSequence(const sf::Vector2i mousePosition)
                     btn.StartPulse();
                 }
                 enteringSequence = false;
+                isGameStarted = false;
+                sequenceIndex = 0;
+                PressToPlay();
             }
             break;
         }
@@ -151,7 +156,7 @@ void Field::ResetAllButtons()
     }
 }
 
-const bool Field::MathchedSequence() const
+const bool Field::IsMathchedSequence() const
 {
     return matchedSequence;
 }
@@ -161,5 +166,13 @@ void Field::Draw(sf::RenderWindow& window)
     for (auto& button : buttons)
     {
         button.Draw(window);
+    }
+}
+
+void Field::Update(const float dt)
+{
+    for (auto& button : buttons)
+    {
+        button.ColorTransition(dt);
     }
 }

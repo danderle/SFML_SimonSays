@@ -7,16 +7,18 @@ Pattern::Pattern()
 	buttonIndex = std::uniform_int_distribution<int>(0, 3);
 }
 
-void Pattern::AddRandom()
+void Pattern::Add()
 {
+	//adds a random buttons index to the sequence
 	sequence.push_back(buttonIndex(rng));
-	std::stringstream ss;
+	
+	/*std::stringstream ss;
 	ss << "Current pattern: \n";
 	for (auto seq : sequence)
 	{
 		ss << seq << "\n";
 	}
-	std::cout << ss.str();
+	std::cout << ss.str();*/
 }
 
 void Pattern::Clear()
