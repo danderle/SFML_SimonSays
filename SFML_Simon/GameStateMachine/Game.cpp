@@ -29,6 +29,7 @@ void Game::Run()
                 {
                     if (field.StartButtonPressed(gameData->Input.GetMousePosition(gameData->Window)))
                     {
+                        pattern.Clear();
                         pattern.Add();
                         field.SetSequence(pattern.Get());
                     }

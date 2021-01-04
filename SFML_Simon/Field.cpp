@@ -140,7 +140,6 @@ void Field::EnterSequence(const sf::Vector2i mousePosition)
                 }
                 enteringSequence = false;
                 isGameStarted = false;
-                sequenceIndex = 0;
                 PressToPlay();
             }
             break;
