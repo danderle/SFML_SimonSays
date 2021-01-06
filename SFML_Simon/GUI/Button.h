@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <cassert>
 
@@ -16,6 +17,10 @@ public:
 
 	const bool Contains(sf::Vector2f position);
 	const bool Contains(sf::Vector2i position);
+
+	void LoadSound(std::string fileName);
+	void PlaySound();
+	void StopSound();
 
 	/// <summary>
 	/// Set the default background color
@@ -73,6 +78,8 @@ private:
 	sf::Uint8 rMax;
 	sf::Uint8 gMax;
 	sf::Uint8 bMax;
+	sf::SoundBuffer soundBuffer;
+	sf::Sound sound;
 
 	bool hover = false;
 	bool continousPulse = false;
@@ -85,7 +92,7 @@ private:
 
 private:
 	static constexpr float colorTransitionTimeout = 0.1f;
-	static constexpr sf::Uint8 colorSteps = 25;
+	static constexpr sf::Uint8 colorSteps = 50;
 	static unsigned int totalIndex;
 };
 

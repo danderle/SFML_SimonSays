@@ -11,21 +11,25 @@ Field::Field(sf::RenderWindow& window)
     buttonR.SetColor(sf::Color::Red);
     buttonR.SetMaxRGB(255, 205, 205);
     buttonR.SetMinRGB(255, 0, 0);
+    buttonR.LoadSound("Resources\\Sounds\\button1.wav");
 
     Button buttonG(buttonSize, buttonSize, windowSize.x / 2, windowSize.y / 2 - buttonSize);
     buttonG.SetColor(sf::Color::Green);
     buttonG.SetMaxRGB(205, 255, 205);
     buttonG.SetMinRGB(0, 255, 0);
+    buttonG.LoadSound("Resources\\Sounds\\button2.wav");
 
     Button buttonB(buttonSize, buttonSize, windowSize.x / 2, windowSize.y / 2);
     buttonB.SetColor(sf::Color::Blue);
     buttonB.SetMaxRGB(205, 205, 255);
     buttonB.SetMinRGB(0, 0, 255);
+    buttonB.LoadSound("Resources\\Sounds\\button3.wav");
 
     Button buttonY(buttonSize, buttonSize, windowSize.x / 2 - buttonSize, windowSize.y / 2);
     buttonY.SetColor(sf::Color::Yellow);
     buttonY.SetMaxRGB(255, 255, 205);
     buttonY.SetMinRGB(255, 255, 0);
+    buttonY.LoadSound("Resources\\Sounds\\button4.wav");
 
     buttons.push_back(buttonR);
     buttons.push_back(buttonG);

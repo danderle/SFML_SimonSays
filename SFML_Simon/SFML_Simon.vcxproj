@@ -33,6 +33,12 @@
     <ClInclude Include="GUI\Button.h" />
     <ClInclude Include="Pattern.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resources\Sounds\button1.wav" />
+    <Media Include="Resources\Sounds\button2.wav" />
+    <Media Include="Resources\Sounds\button3.wav" />
+    <Media Include="Resources\Sounds\button4.wav" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -103,7 +109,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GameStateMachine;C:\Users\beach\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GUI</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\Resources;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\Resources\Sounds;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GameStateMachine;C:\Users\beach\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GUI</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -121,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GameStateMachine;C:\Users\beach\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GUI</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\Resources;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\Resources\Sounds;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GameStateMachine;C:\Users\beach\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GUI</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>

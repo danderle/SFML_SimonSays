@@ -32,6 +32,25 @@ const bool Button::Contains(sf::Vector2i position)
 	return Contains(sf::Vector2f(position));
 }
 
+void Button::LoadSound(std::string fileName)
+{
+	if (!soundBuffer.loadFromFile(fileName))
+	{
+		std::cout << "Loading sound failed, check path: " << fileName << std::endl;
+	}
+}
+
+void Button::PlaySound()
+{
+	sound.setBuffer(soundBuffer);
+	sound.play();
+}
+
+void Button::StopSound()
+{
+	sound.stop();
+}
+
 void Button::SetColor(const sf::Color color)
 {
 	startingColor = color;
@@ -62,6 +81,7 @@ void Button::StartPulse()
 	isPulsing = true;
 	isFinished = false;
 	increaseRgb = true;
+	PlaySound();
 }
 
 void Button::StartContinousPulse()
@@ -188,6 +208,7 @@ void Button::DecreaseRGB(const float dt)
 			decreaseRgb = false;
 			isPulsing = false;
 			isFinished = true;
+			StopSound();
 			if (continousPulse)
 			{
 				isFinished = false;

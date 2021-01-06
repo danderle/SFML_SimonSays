@@ -9,6 +9,12 @@
       <Extensions>
       </Extensions>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{e93bca58-ddb5-40d4-9969-12c0d6e29744}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Sounds">
+      <UniqueIdentifier>{9247eadb-ff55-4d18-8a4b-e33871ffc388}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GUI\Button.cpp">
@@ -36,5 +42,19 @@
     </ClInclude>
     <ClInclude Include="Field.h" />
     <ClInclude Include="Pattern.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resources\Sounds\button2.wav">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
+    <Media Include="Resources\Sounds\button3.wav">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
+    <Media Include="Resources\Sounds\button4.wav">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
+    <Media Include="Resources\Sounds\button1.wav">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
   </ItemGroup>
 </Project>
