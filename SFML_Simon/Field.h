@@ -55,6 +55,7 @@ public:
 	void Update(const float dt);
 private:
 	std::vector<Button> buttons;
+	sf::CircleShape middle;
 	std::vector<unsigned int> sequence;
 	bool runSequence = false;
 	bool enteringSequence = false;

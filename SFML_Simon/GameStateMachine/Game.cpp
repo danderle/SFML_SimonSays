@@ -10,7 +10,7 @@ void Game::Run()
     Field field(gameData->Window);
     field.PressToPlay();
     Pattern pattern;
-    bool adding = true;
+    bool adding = false;
 
     float dt;
     float frameTime;

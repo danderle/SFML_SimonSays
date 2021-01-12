@@ -14,9 +14,10 @@ Button::Button(const sf::Vector2f size, const sf::Vector2f position)
 	bMax(-1),
 	bMin(-1),
 	rMax(-1),
-	rMin(-1)
+	rMin(-1),
+	shape(size, cornerPointCount)
 {
-	shape.setSize(size);
+	shape.setOrigin(size.x / 2, size.y / 2);
 	shape.setPosition(position);
 	index = totalIndex;
 	totalIndex++;
@@ -143,6 +144,11 @@ const unsigned int Button::GetIndex() const
 sf::FloatRect Button::GetRect() const
 {
 	return shape.getGlobalBounds();
+}
+
+void Button::Rotate(const float degree)
+{
+	shape.setRotation(degree);
 }
 
 void Button::Draw(sf::RenderWindow& window)

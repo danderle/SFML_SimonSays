@@ -2,39 +2,49 @@
 
 Field::Field(sf::RenderWindow& window)
     :
-    sequence({ 0,1,2,3,3,2,1,0 })
+    sequence({ 0,1,2,3,3,2,1,0 }),
+    middle(80)
 {
     auto windowSize = sf::Vector2f(window.getSize());
     auto buttonSize = (float)windowSize.x / 3;
 
-    Button buttonR(buttonSize, buttonSize, windowSize.x / 2 - buttonSize, windowSize.y / 2 - buttonSize);
+    Button buttonR(buttonSize, buttonSize, windowSize.x / 2 - buttonSize / 2, windowSize.y / 2 - buttonSize / 2);
     buttonR.SetColor(sf::Color::Red);
     buttonR.SetMaxRGB(255, 205, 205);
     buttonR.SetMinRGB(255, 0, 0);
     buttonR.LoadSound("Resources\\Sounds\\button1.wav");
+    buttonR.Rotate(-90.f);
 
-    Button buttonG(buttonSize, buttonSize, windowSize.x / 2, windowSize.y / 2 - buttonSize);
+    Button buttonG(buttonSize, buttonSize, windowSize.x / 2 + buttonSize / 2, windowSize.y / 2 - buttonSize / 2);
     buttonG.SetColor(sf::Color::Green);
     buttonG.SetMaxRGB(205, 255, 205);
     buttonG.SetMinRGB(0, 255, 0);
     buttonG.LoadSound("Resources\\Sounds\\button2.wav");
 
-    Button buttonB(buttonSize, buttonSize, windowSize.x / 2, windowSize.y / 2);
+    Button buttonB(buttonSize, buttonSize, windowSize.x / 2 + buttonSize / 2, windowSize.y / 2 + buttonSize / 2);
     buttonB.SetColor(sf::Color::Blue);
     buttonB.SetMaxRGB(205, 205, 255);
     buttonB.SetMinRGB(0, 0, 255);
     buttonB.LoadSound("Resources\\Sounds\\button3.wav");
+    buttonB.Rotate(90.f);
 
-    Button buttonY(buttonSize, buttonSize, windowSize.x / 2 - buttonSize, windowSize.y / 2);
+    Button buttonY(buttonSize, buttonSize, windowSize.x / 2 - buttonSize / 2, windowSize.y / 2 + buttonSize / 2);
     buttonY.SetColor(sf::Color::Yellow);
     buttonY.SetMaxRGB(255, 255, 205);
     buttonY.SetMinRGB(255, 255, 0);
     buttonY.LoadSound("Resources\\Sounds\\button4.wav");
+    buttonY.Rotate(180.f);
 
     buttons.push_back(buttonR);
     buttons.push_back(buttonG);
     buttons.push_back(buttonB);
     buttons.push_back(buttonY);
+
+    middle.setOrigin(middle.getRadius(), middle.getRadius());
+    middle.setPosition(windowSize.x / 2, windowSize.y / 2 );
+    middle.setFillColor(sf::Color::White);
+    middle.setOutlineThickness(-8);
+    middle.setOutlineColor(sf::Color::Black);
 }
 
 const bool Field::IsGameStarted() const
@@ -170,6 +180,7 @@ void Field::Draw(sf::RenderWindow& window)
     {
         button.Draw(window);
     }
+    window.draw(middle);
 }
 
 void Field::Update(const float dt)

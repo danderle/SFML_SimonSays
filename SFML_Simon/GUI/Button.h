@@ -3,6 +3,7 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <cassert>
+#include "RoundedQuarterCircle.h"
 
 /// <summary>
 /// Class represent a button
@@ -62,7 +63,7 @@ public:
 
 	const unsigned int GetIndex() const;
 	sf::FloatRect GetRect() const;
-
+	void Rotate(const float degree);
 	void Draw(sf::RenderWindow& window);
 
 private:
@@ -70,7 +71,7 @@ private:
 	void DecreaseRGB(const float dt);
 
 private:
-	sf::RectangleShape shape;
+	QuarterCircle shape;
 	sf::Color startingColor;
 	sf::Uint8 rMin;
 	sf::Uint8 gMin;
@@ -93,6 +94,8 @@ private:
 private:
 	static constexpr float colorTransitionTimeout = 0.1f;
 	static constexpr sf::Uint8 colorSteps = 50;
+	static constexpr float radius = 15;
+	static constexpr unsigned int cornerPointCount = 50;
 	static unsigned int totalIndex;
 };
 
