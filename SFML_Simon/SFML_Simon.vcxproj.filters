@@ -29,6 +29,12 @@
     </ClCompile>
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Pattern.cpp" />
+    <ClCompile Include="GUI\RoundedRectangleShape.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\RoundedQuarterCircle.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\Button.h">
@@ -42,6 +48,12 @@
     </ClInclude>
     <ClInclude Include="Field.h" />
     <ClInclude Include="Pattern.h" />
+    <ClInclude Include="RoundedRectangleShape.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\RoundedQuarterCircle.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sounds\button2.wav">

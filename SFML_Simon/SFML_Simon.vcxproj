@@ -23,6 +23,8 @@
     <ClCompile Include="GameStateMachine\Game.cpp" />
     <ClCompile Include="GameStateMachine\InputManager.cpp" />
     <ClCompile Include="GUI\Button.cpp" />
+    <ClCompile Include="GUI\RoundedQuarterCircle.cpp" />
+    <ClCompile Include="GUI\RoundedRectangleShape.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pattern.cpp" />
   </ItemGroup>
@@ -31,7 +33,9 @@
     <ClInclude Include="GameStateMachine\Game.h" />
     <ClInclude Include="GameStateMachine\InputManager.h" />
     <ClInclude Include="GUI\Button.h" />
+    <ClInclude Include="GUI\RoundedQuarterCircle.h" />
     <ClInclude Include="Pattern.h" />
+    <ClInclude Include="RoundedRectangleShape.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sounds\button1.wav" />
