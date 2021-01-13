@@ -35,6 +35,10 @@
     <ClCompile Include="GUI\RoundedQuarterCircle.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
+    <ClCompile Include="GUI\Text.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldCenter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\Button.h">
@@ -54,6 +58,10 @@
     <ClInclude Include="GUI\RoundedQuarterCircle.h">
       <Filter>GUI</Filter>
     </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldCenter.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sounds\button2.wav">

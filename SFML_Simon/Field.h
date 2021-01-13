@@ -3,6 +3,8 @@
 #include "InputManager.h"
 #include "Button.h"
 #include <vector>
+#include "Text.h"
+#include "FieldCenter.h"
 
 class Field
 {
@@ -53,9 +55,15 @@ public:
 	void Draw(sf::RenderWindow& window);
 
 	void Update(const float dt);
+
 private:
+	void InitializeButtons(const sf::Vector2f& windowSize);
+	void SetupMiddle(const sf::Vector2f& windowSize);
+
+private:
+	FieldCenter fieldCenter;
+	Text toptext;
 	std::vector<Button> buttons;
-	sf::CircleShape middle;
 	std::vector<unsigned int> sequence;
 	bool runSequence = false;
 	bool enteringSequence = false;

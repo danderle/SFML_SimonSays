@@ -19,16 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FieldCenter.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameStateMachine\Game.cpp" />
     <ClCompile Include="GameStateMachine\InputManager.cpp" />
     <ClCompile Include="GUI\Button.cpp" />
     <ClCompile Include="GUI\RoundedQuarterCircle.cpp" />
     <ClCompile Include="GUI\RoundedRectangleShape.cpp" />
+    <ClCompile Include="GUI\Text.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pattern.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FieldCenter.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameStateMachine\Game.h" />
     <ClInclude Include="GameStateMachine\InputManager.h" />
@@ -36,6 +39,7 @@
     <ClInclude Include="GUI\RoundedQuarterCircle.h" />
     <ClInclude Include="Pattern.h" />
     <ClInclude Include="RoundedRectangleShape.h" />
+    <ClInclude Include="Text.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sounds\button1.wav" />
