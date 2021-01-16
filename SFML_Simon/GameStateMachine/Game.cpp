@@ -13,9 +13,6 @@ void Game::Run()
     bool adding = false;
 
     float dt;
-    float frameTime;
-    float currentTime = clock.getElapsedTime().asSeconds();
-    float fps;
     while (gameData->Window.isOpen())
     {
         sf::Event event;
@@ -25,19 +22,28 @@ void Game::Run()
                 gameData->Window.close();
             if (event.type == sf::Event::MouseButtonReleased)
             {
-                if (!field.IsGameStarted())
+                auto position = gameData->Input.GetMousePosition(gameData->Window);
+                if (field.IsInBounds(sf::Vector2f(position)))
                 {
-                    if (field.StartButtonPressed(gameData->Input.GetMousePosition(gameData->Window)))
+                    if (field.CenterIsPressed(position))
                     {
-                        pattern.Clear();
-                        pattern.Add();
-                        field.SetSequence(pattern.Get());
+                        //Ignore middle presses
+                        continue;
                     }
-                    
-                }
-                else
-                {
-                    field.EnterSequence(gameData->Input.GetMousePosition(gameData->Window));
+                    if (!field.IsGameStarted())
+                    {
+                        //true to start game
+                        if (field.StartButtonPressed(position))
+                        {
+                            pattern.Clear();
+                            pattern.Add();
+                            field.SetSequence(pattern.Get());
+                        }
+                    }
+                    else
+                    {
+                        field.EnterSequence(gameData->Input.GetMousePosition(gameData->Window));
+                    }
                 }
             }
         }
@@ -51,17 +57,13 @@ void Game::Run()
         }
         field.RunSequence();
 
-        frameTime = clock.restart().asSeconds();
-        fps = 1.f / frameTime;
-        dt = frameTime / fps;
-        while (fps > 0)
-        {
-            field.Update(dt);
-            gameData->Window.clear();
-            field.Draw(gameData->Window);
-            gameData->Window.display();
-            fps--;
-        }
+        //get delta time
+        dt = clock.restart().asSeconds();
+
+        field.Update(dt);
+        gameData->Window.clear();
+        field.Draw(gameData->Window);
+        gameData->Window.display();
     }
 
 }
@@ -71,7 +73,7 @@ void Game::Run()
 void Game::Setup()
 {
     gameData->Window.create(sf::VideoMode(800, 800), "Simon Says!", sf::Style::Close | sf::Style::Titlebar);
-    gameData->Window.setVerticalSyncEnabled(true);
+    gameData->Window.setFramerateLimit(60);
 
     //Set window position relative to desktop size
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
