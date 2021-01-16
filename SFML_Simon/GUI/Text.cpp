@@ -14,17 +14,26 @@ float Text::GetHeight() const
     return text.getLocalBounds().height;
 }
 
-void Text::SetCenterPosition(const float x, const float y)
+void Text::SetPosition(const float x, const float y)
 {
-    auto centerX = text.getGlobalBounds().left + text.getGlobalBounds().width / 2;
-    auto centerY = text.getGlobalBounds().top + text.getGlobalBounds().height / 2;
-    text.setOrigin(centerX, centerY);
-    text.setPosition(x, y);
+    SetPosition({x,y});
+}
+
+void Text::SetPosition(const sf::Vector2f position)
+{
+    text.setPosition(position);
 }
 
 void Text::SetColor(const sf::Color color)
 {
     text.setFillColor(color);
+}
+
+void Text::SetOriginToCenter()
+{
+    auto centerX = text.getLocalBounds().left + text.getGlobalBounds().width / 2;
+    auto centerY = text.getLocalBounds().top + text.getGlobalBounds().height / 2;
+    text.setOrigin(centerX, centerY);
 }
 
 void Text::SetOutlineColor(const sf::Color color)
@@ -38,17 +47,21 @@ void Text::SetOutlineThickness(const float thickness)
     auto f = text.getOutlineThickness();
 }
 
-void Text::SetTopLeftPosition(const float x, const float y)
+void Text::SetOriginToTopLeft()
 {
-    auto leftX = text.getGlobalBounds().left + text.getGlobalBounds().width / 2;
-    auto topY = text.getGlobalBounds().top + text.getGlobalBounds().height / 2;
+    auto leftX = text.getLocalBounds().left;
+    auto topY = text.getLocalBounds().top;
     text.setOrigin(leftX, topY);
-    text.setPosition(x, y);
 }
 
 void Text::SetString(const std::string& str)
 {
     text.setString(str);
+}
+
+void Text::SetXposition(const float x)
+{
+    text.setPosition(x, text.getPosition().y);
 }
 
 void Text::Draw(sf::RenderWindow& window)

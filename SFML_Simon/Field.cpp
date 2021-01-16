@@ -35,6 +35,7 @@ const bool Field::CenterIsPressed(const sf::Vector2i mousePosition) const
     return fieldCenter.Contains(sf::Vector2f(mousePosition));
 }
 
+
 const bool Field::IsInBounds(const sf::Vector2f mousePosition) const
 {
     auto outerBoundsCenter = outerBounds.getPosition();

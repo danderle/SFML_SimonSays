@@ -2,7 +2,8 @@
 
 FieldCenter::FieldCenter(const sf::Vector2f windowSize)
 	:
-	circle(circleRadius)
+	circle(circleRadius),
+	centerPoint(windowSize.x/2, windowSize.y/2)
 {
 	SetupCircle(windowSize);
 	SetupTexts(windowSize);
@@ -39,11 +40,26 @@ void FieldCenter::SetTurn(const Turn turn)
 		secondLine.SetString("repeat");
 		SetTextColor(pleaseRepeatColor);
 		break;
+	case Turn::GameOver:
+		firstLine.SetString("Game");
+		secondLine.SetString("over");
+		SetTextColor(gameOverColor);
+		break;
 	}
+	CenterText();
 }
 
 
 //Private Methods
+
+
+void FieldCenter::CenterText()
+{
+	firstLine.SetOriginToCenter();
+	secondLine.SetOriginToCenter();
+	firstLine.SetPosition(centerPoint.x, centerPoint.y - firstLine.GetHeight() * 3 / 4);
+	secondLine.SetPosition(centerPoint.x, centerPoint.y + firstLine.GetHeight() * 3 / 4);
+}
 
 void FieldCenter::SetTextColor(const sf::Color color)
 {
@@ -62,7 +78,7 @@ void FieldCenter::SetTextOutline(const sf::Color color, const float thickness)
 void FieldCenter::SetupCircle(const sf::Vector2f windowSize)
 {
 	circle.setOrigin(circle.getRadius(), circle.getRadius());
-	circle.setPosition(windowSize.x / 2, windowSize.y / 2);
+	circle.setPosition(centerPoint);
 	circle.setFillColor({ 192,192,192 });
 	circle.setOutlineThickness(circleOutlineThickness);
 	circle.setOutlineColor(outlineColor);
@@ -72,8 +88,11 @@ void FieldCenter::SetupTexts(const sf::Vector2f windowSize)
 {
 	firstLine.SetString("Press red");
 	secondLine.SetString("to start");
-	firstLine.SetCenterPosition(windowSize.x / 2, windowSize.y / 2 - firstLine.GetHeight() * 3/4);
-	secondLine.SetCenterPosition(windowSize.x / 2, windowSize.y / 2 + secondLine.GetHeight() * 3/4);
+	firstLine.SetOriginToCenter();
+	secondLine.SetOriginToCenter();
+	firstLine.SetPosition(windowSize.x / 2, windowSize.y / 2 - firstLine.GetHeight() * 3/4);
+	secondLine.SetPosition(windowSize.x / 2, windowSize.y / 2 + secondLine.GetHeight() * 3/4);
 	SetTextColor(pressStartColor);
 	SetTextOutline(outlineColor, textOutlineThickness);
 }
+

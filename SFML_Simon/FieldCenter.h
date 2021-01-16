@@ -6,7 +6,8 @@ enum class Turn
 {
 	PressToStart,
 	SimonSays,
-	PleaseRepeat
+	PleaseRepeat,
+	GameOver
 };
 
 class FieldCenter
@@ -19,6 +20,7 @@ public:
 	void SetTurn(const Turn turn);
 
 private:
+	void CenterText();
 	void SetTextColor(const sf::Color color);
 	void SetTextOutline(const sf::Color color, const float thickness);
 	void SetupCircle(const sf::Vector2f windowSize);
@@ -27,6 +29,7 @@ private:
 	sf::CircleShape circle;
 	Text firstLine;
 	Text secondLine;
+	sf::Vector2f centerPoint;
 
 	static constexpr float circleRadius = 98.f;
 	static constexpr float circleOutlineThickness = -8.f;
@@ -35,5 +38,6 @@ private:
 	const sf::Color pressStartColor = sf::Color::Black;
 	const sf::Color simonsSaysColor = sf::Color(255, 0, 255);
 	const sf::Color pleaseRepeatColor = sf::Color(255, 128, 0);
+	const sf::Color gameOverColor = sf::Color(255, 0, 0);
 };
 

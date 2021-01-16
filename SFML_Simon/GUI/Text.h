@@ -8,12 +8,15 @@ public:
 
 	float GetHeight() const;
 
-	void SetCenterPosition(const float x, const float y);
+	void SetPosition(const float x, const float y);
+	void SetPosition(const sf::Vector2f position);
 	void SetColor(const sf::Color color);
+	void SetOriginToCenter();
 	void SetOutlineColor(const sf::Color color);
 	void SetOutlineThickness(const float thickness);
-	void SetTopLeftPosition(const float x, const float y);
+	void SetOriginToTopLeft();
 	void SetString(const std::string & str);
+	void SetXposition(const float x);
 
 	void Draw(sf::RenderWindow& window);
 private:

@@ -15,6 +15,12 @@ public:
 	const bool IsGameStarted() const;
 	const bool IsSomeButtonPulsing() const;
 	const bool CenterIsPressed(const sf::Vector2i mousePosition) const;
+
+	/// <summary>
+	/// Calcualates the distance between the mouse position and the center of the field
+	/// </summary>
+	/// <param name="mousePosition"></param>
+	/// <returns>true if inside the radius of field</returns>
 	const bool IsInBounds(const sf::Vector2f mousePosition) const;
 
 	/// <summary>
