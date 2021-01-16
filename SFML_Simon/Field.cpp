@@ -3,11 +3,12 @@
 Field::Field(sf::RenderWindow& window)
     :
     sequence({ 0,1,2,3,3,2,1,0 }),
-    fieldCenter(sf::Vector2f(window.getSize()))
+    fieldCenter(sf::Vector2f(window.getSize())),
+    outerBounds(1)
 {
     auto windowSize = sf::Vector2f(window.getSize());
+    
     InitializeButtons(windowSize);
-    SetupMiddle(windowSize);
 }
 
 const bool Field::IsGameStarted() const
@@ -29,10 +30,25 @@ const bool Field::IsSomeButtonPulsing() const
     return stillPulsing;
 }
 
+const bool Field::CenterIsPressed(const sf::Vector2i mousePosition) const
+{
+    return fieldCenter.Contains(sf::Vector2f(mousePosition));
+}
+
+const bool Field::IsInBounds(const sf::Vector2f mousePosition) const
+{
+    auto outerBoundsCenter = outerBounds.getPosition();
+    auto x = mousePosition.x - outerBoundsCenter.x;
+    auto y = mousePosition.y - outerBoundsCenter.y;
+    auto distanceToCenter = sqrt((x * x) + (y * y));
+    return distanceToCenter <= outerBounds.getRadius();
+}
+
 void Field::PressToPlay()
 {
     assert(buttons.size() > 0);
     buttons[0].StartContinousPulse();
+    fieldCenter.SetTurn(Turn::PressToStart);
 }
 
 void Field::RunSequence()
@@ -53,6 +69,7 @@ void Field::RunSequence()
             runSequence = false;
             enteringSequence = true;
             sequenceIndex = 0;
+            fieldCenter.SetTurn(Turn::PleaseRepeat);
         }
     }
     //start button pulse
@@ -69,6 +86,7 @@ void Field::SetSequence(const std::vector<unsigned int>& seq)
     runSequence = true;
     matchedSequence = false;
     sequenceIndex = 0;
+    fieldCenter.SetTurn(Turn::SimonSays);
     ResetAllButtons();
 }
 
@@ -144,6 +162,7 @@ void Field::Draw(sf::RenderWindow& window)
         button.Draw(window);
     }
     fieldCenter.Draw(window);
+    window.draw(outerBounds);
 }
 
 void Field::Update(const float dt)
@@ -160,6 +179,11 @@ void Field::Update(const float dt)
 void Field::InitializeButtons(const sf::Vector2f& windowSize)
 {
     auto buttonSize = (float)windowSize.x * 3 / 7;
+
+    outerBounds.setRadius(buttonSize);
+    outerBounds.setOrigin(buttonSize, buttonSize);
+    outerBounds.setPosition(windowSize.x / 2, windowSize.y / 2);
+    outerBounds.setFillColor({0,0,0,0});
 
     Button buttonR(buttonSize, buttonSize, windowSize.x / 2 - buttonSize / 2, windowSize.y / 2 - buttonSize / 2);
     buttonR.SetColor(sf::Color::Red);
@@ -192,10 +216,4 @@ void Field::InitializeButtons(const sf::Vector2f& windowSize)
     buttons.push_back(buttonG);
     buttons.push_back(buttonB);
     buttons.push_back(buttonY);
-}
-
-void Field::SetupMiddle(const sf::Vector2f& windowSize)
-{
-    
-
 }

@@ -8,6 +8,11 @@ FieldCenter::FieldCenter(const sf::Vector2f windowSize)
 	SetupTexts(windowSize);
 }
 
+bool FieldCenter::Contains(const sf::Vector2f mousePosition) const
+{
+	return circle.getGlobalBounds().contains(mousePosition);
+}
+
 void FieldCenter::Draw(sf::RenderWindow& window)
 {
 	window.draw(circle);
@@ -22,17 +27,17 @@ void FieldCenter::SetTurn(const Turn turn)
 	case Turn::PressToStart:
 		firstLine.SetString("Press red");
 		secondLine.SetString("to start");
-		SetTextColor(sf::Color::Black);
+		SetTextColor(pressStartColor);
 		break;
 	case Turn::SimonSays:
 		firstLine.SetString("Simon");
 		secondLine.SetString("says");
-		SetTextColor({ 255, 0, 255 });
+		SetTextColor(simonsSaysColor);
 		break;
 	case Turn::PleaseRepeat:
 		firstLine.SetString("Please");
 		secondLine.SetString("repeat");
-		SetTextColor({ 255, 128, 0 });
+		SetTextColor(pleaseRepeatColor);
 		break;
 	}
 }
@@ -46,13 +51,21 @@ void FieldCenter::SetTextColor(const sf::Color color)
 	secondLine.SetColor(color);
 }
 
+void FieldCenter::SetTextOutline(const sf::Color color, const float thickness)
+{
+	firstLine.SetOutlineColor(sf::Color::Black);
+	firstLine.SetOutlineThickness(thickness);
+	secondLine.SetOutlineColor(sf::Color::Black);
+	secondLine.SetOutlineThickness(thickness);
+}
+
 void FieldCenter::SetupCircle(const sf::Vector2f windowSize)
 {
 	circle.setOrigin(circle.getRadius(), circle.getRadius());
 	circle.setPosition(windowSize.x / 2, windowSize.y / 2);
 	circle.setFillColor({ 192,192,192 });
-	circle.setOutlineThickness(-8);
-	circle.setOutlineColor(sf::Color::Black);
+	circle.setOutlineThickness(circleOutlineThickness);
+	circle.setOutlineColor(outlineColor);
 }
 
 void FieldCenter::SetupTexts(const sf::Vector2f windowSize)
@@ -61,5 +74,6 @@ void FieldCenter::SetupTexts(const sf::Vector2f windowSize)
 	secondLine.SetString("to start");
 	firstLine.SetCenterPosition(windowSize.x / 2, windowSize.y / 2 - firstLine.GetHeight() * 3/4);
 	secondLine.SetCenterPosition(windowSize.x / 2, windowSize.y / 2 + secondLine.GetHeight() * 3/4);
-	SetTextColor(sf::Color::Black);
+	SetTextColor(pressStartColor);
+	SetTextOutline(outlineColor, textOutlineThickness);
 }

@@ -52,16 +52,16 @@
     </ClInclude>
     <ClInclude Include="Field.h" />
     <ClInclude Include="Pattern.h" />
-    <ClInclude Include="RoundedRectangleShape.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
     <ClInclude Include="GUI\RoundedQuarterCircle.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="Text.h">
+    <ClInclude Include="FieldCenter.h" />
+    <ClInclude Include="GUI\Text.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="FieldCenter.h" />
+    <ClInclude Include="GUI\RoundedRectangleShape.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sounds\button2.wav">

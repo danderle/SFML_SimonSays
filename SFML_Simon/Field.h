@@ -11,9 +11,11 @@ class Field
 public:
 	Field(sf::RenderWindow& window);
 	
-	const bool IsGameStarted() const;
 
+	const bool IsGameStarted() const;
 	const bool IsSomeButtonPulsing() const;
+	const bool CenterIsPressed(const sf::Vector2i mousePosition) const;
+	const bool IsInBounds(const sf::Vector2f mousePosition) const;
 
 	/// <summary>
 	/// Signals to the user game is ready to start
@@ -58,10 +60,10 @@ public:
 
 private:
 	void InitializeButtons(const sf::Vector2f& windowSize);
-	void SetupMiddle(const sf::Vector2f& windowSize);
 
 private:
 	FieldCenter fieldCenter;
+	sf::CircleShape outerBounds;
 	Text toptext;
 	std::vector<Button> buttons;
 	std::vector<unsigned int> sequence;

@@ -37,9 +37,9 @@
     <ClInclude Include="GameStateMachine\InputManager.h" />
     <ClInclude Include="GUI\Button.h" />
     <ClInclude Include="GUI\RoundedQuarterCircle.h" />
+    <ClInclude Include="GUI\RoundedRectangleShape.h" />
+    <ClInclude Include="GUI\Text.h" />
     <ClInclude Include="Pattern.h" />
-    <ClInclude Include="RoundedRectangleShape.h" />
-    <ClInclude Include="Text.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sounds\button1.wav" />

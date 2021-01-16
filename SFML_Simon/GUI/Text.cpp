@@ -27,6 +27,17 @@ void Text::SetColor(const sf::Color color)
     text.setFillColor(color);
 }
 
+void Text::SetOutlineColor(const sf::Color color)
+{
+    text.setOutlineColor(color);
+}
+
+void Text::SetOutlineThickness(const float thickness)
+{
+    text.setOutlineThickness(thickness);
+    auto f = text.getOutlineThickness();
+}
+
 void Text::SetTopLeftPosition(const float x, const float y)
 {
     auto leftX = text.getGlobalBounds().left + text.getGlobalBounds().width / 2;

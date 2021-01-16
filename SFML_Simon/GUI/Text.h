@@ -10,6 +10,8 @@ public:
 
 	void SetCenterPosition(const float x, const float y);
 	void SetColor(const sf::Color color);
+	void SetOutlineColor(const sf::Color color);
+	void SetOutlineThickness(const float thickness);
 	void SetTopLeftPosition(const float x, const float y);
 	void SetString(const std::string & str);
 
