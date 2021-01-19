@@ -23,23 +23,28 @@
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameStateMachine\Game.cpp" />
     <ClCompile Include="GameStateMachine\InputManager.cpp" />
+    <ClCompile Include="GameStateMachine\StateMachine.cpp" />
     <ClCompile Include="GUI\Button.cpp" />
     <ClCompile Include="GUI\RoundedQuarterCircle.cpp" />
     <ClCompile Include="GUI\RoundedRectangleShape.cpp" />
     <ClCompile Include="GUI\Text.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pattern.cpp" />
+    <ClCompile Include="States\GameState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FieldCenter.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameStateMachine\Game.h" />
     <ClInclude Include="GameStateMachine\InputManager.h" />
+    <ClInclude Include="GameStateMachine\StateMachine.h" />
     <ClInclude Include="GUI\Button.h" />
     <ClInclude Include="GUI\RoundedQuarterCircle.h" />
     <ClInclude Include="GUI\RoundedRectangleShape.h" />
     <ClInclude Include="GUI\Text.h" />
     <ClInclude Include="Pattern.h" />
+    <ClInclude Include="States\GameState.h" />
+    <ClInclude Include="States\IState.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sounds\button1.wav" />
@@ -117,13 +122,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\Resources;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\Resources\Sounds;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GameStateMachine;C:\Users\beach\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GUI</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon\States;C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon\Resources;C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon\Resources\Sounds;C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon\GameStateMachine;C:\Users\beach\Development\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon;C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon\GUI</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\beach\C++ Development\SFML_Simon\SFML_Simon\GUI;C:\Users\beach\C++ Development\SFML_Simon\SFML_Simon\GameStateMachine;C:\Users\beach\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\C++ Development\Frameworks\SFML-2.5.1\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\beach\Development\C++ Development\SFML_Simon\SFML_Simon\GUI;C:\Users\beach\Development\C++ Development\SFML_Simon\SFML_Simon\GameStateMachine;C:\Users\beach\Development\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\Development\C++ Development\Frameworks\SFML-2.5.1\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-window-d.lib;sfml-main-d.lib;shell32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -135,7 +140,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\Resources;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\Resources\Sounds;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GameStateMachine;C:\Users\beach\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon;C:\Users\beach\C++ Development\SFML_SimonSays\SFML_Simon\GUI</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon\States;C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon\Resources;C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon\Resources\Sounds;C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon\GameStateMachine;C:\Users\beach\Development\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon;C:\Users\beach\Development\C++ Development\SFML_SimonSays\SFML_Simon\GUI</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -144,7 +149,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>sfml-graphics.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib;sfml-window.lib;sfml-main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\beach\C++ Development\SFML_Simon\SFML_Simon\GUI;C:\Users\beach\C++ Development\SFML_Simon\SFML_Simon\GameStateMachine;C:\Users\beach\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\C++ Development\Frameworks\SFML-2.5.1\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\beach\Development\C++ Development\SFML_Simon\SFML_Simon\GUI;C:\Users\beach\Development\C++ Development\SFML_Simon\SFML_Simon\GameStateMachine;C:\Users\beach\Development\C++ Development\Frameworks\SFML-2.5.1\include;C:\Users\beach\Development\C++ Development\Frameworks\SFML-2.5.1\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

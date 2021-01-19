@@ -15,6 +15,9 @@
     <Filter Include="Resources\Sounds">
       <UniqueIdentifier>{9247eadb-ff55-4d18-8a4b-e33871ffc388}</UniqueIdentifier>
     </Filter>
+    <Filter Include="States">
+      <UniqueIdentifier>{3e1ce76d-0d4a-4af4-9d61-8b515778c309}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GUI\Button.cpp">
@@ -39,6 +42,12 @@
       <Filter>GUI</Filter>
     </ClCompile>
     <ClCompile Include="FieldCenter.cpp" />
+    <ClCompile Include="GameStateMachine\StateMachine.cpp">
+      <Filter>GameStateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="States\GameState.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\Button.h">
@@ -61,6 +70,15 @@
     </ClInclude>
     <ClInclude Include="GUI\RoundedRectangleShape.h">
       <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="States\IState.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine\StateMachine.h">
+      <Filter>GameStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="States\GameState.h">
+      <Filter>States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
