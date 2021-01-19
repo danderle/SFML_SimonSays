@@ -31,11 +31,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pattern.cpp" />
     <ClCompile Include="States\GameState.cpp" />
+    <ClCompile Include="States\SplashScreenState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FieldCenter.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameStateMachine\Game.h" />
+    <ClInclude Include="GameStateMachine\GameData.h" />
     <ClInclude Include="GameStateMachine\InputManager.h" />
     <ClInclude Include="GameStateMachine\StateMachine.h" />
     <ClInclude Include="GUI\Button.h" />
@@ -45,6 +47,7 @@
     <ClInclude Include="Pattern.h" />
     <ClInclude Include="States\GameState.h" />
     <ClInclude Include="States\IState.h" />
+    <ClInclude Include="States\SplashScreenState.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sounds\button1.wav" />
