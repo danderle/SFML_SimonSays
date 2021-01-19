@@ -1,17 +1,14 @@
 #include "Game.h"
+#include "GameState.h"
 
 Game::Game()
 {
 	Setup();
+    gameData->Machine.AddState(std::make_unique<GameState>(gameData));
 }
 
 void Game::Run()
 {
-    Field field(gameData->Window);
-    field.PressToPlay();
-    Pattern pattern;
-    bool adding = false;
-
     float dt;
     while (gameData->Window.isOpen())
     {
@@ -19,53 +16,23 @@ void Game::Run()
         while (gameData->Window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                gameData->Window.close();
-            if (event.type == sf::Event::MouseButtonReleased)
             {
-                auto position = gameData->Input.GetMousePosition(gameData->Window);
-                if (field.IsInBounds(sf::Vector2f(position)))
-                {
-                    if (field.CenterIsPressed(position))
-                    {
-                        //Ignore middle presses
-                        continue;
-                    }
-                    if (!field.IsGameStarted())
-                    {
-                        //true to start game
-                        if (field.StartButtonPressed(position))
-                        {
-                            pattern.Clear();
-                            pattern.Add();
-                            field.SetSequence(pattern.Get());
-                        }
-                    }
-                    else
-                    {
-                        field.EnterSequence(gameData->Input.GetMousePosition(gameData->Window));
-                    }
-                }
+                gameData->Window.close();
+            }
+            else
+            {
+                gameData->Machine.GetActiveState()->HandleInput(event);
             }
         }
 
-        adding = field.IsMathchedSequence() && !field.IsSomeButtonPulsing();
-        if (adding)
-        {
-            pattern.Add();
-            field.SetSequence(pattern.Get());
-            adding = false;
-        }
-        field.RunSequence();
+        gameData->Machine.ProcessStateChanges();
+        gameData->Machine.GetActiveState()->HandleInput();
 
         //get delta time
         dt = clock.restart().asSeconds();
-
-        field.Update(dt);
-        gameData->Window.clear();
-        field.Draw(gameData->Window);
-        gameData->Window.display();
+        gameData->Machine.GetActiveState()->Update(dt);
+        gameData->Machine.GetActiveState()->Draw();
     }
-
 }
 
 //Private Functions
