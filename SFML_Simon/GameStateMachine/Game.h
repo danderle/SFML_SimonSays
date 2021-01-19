@@ -2,18 +2,8 @@
 #include <memory>
 #include <iostream>
 #include "SFML/Graphics.hpp"
-#include "InputManager.h"
-#include "StateMachine.h"
-
-/// <summary>
-/// Structure represents all the available game data options
-/// </summary>
-struct GameData
-{
-	sf::RenderWindow Window;
-	InputManager Input;
-	StateMachine Machine;
-};
+#include "GameData.h"
+#include "SplashScreenState.h"
 
 /// <summary>
 /// Game class is responsible for initalization and running the game loop

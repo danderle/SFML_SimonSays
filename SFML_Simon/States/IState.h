@@ -4,7 +4,6 @@
 class IState
 {
 public:
-	virtual void Init() = 0;
 	virtual void HandleInput() = 0;
 	virtual void HandleInput(const sf::Event& event) = 0;
 	virtual void Update(float dt) = 0;

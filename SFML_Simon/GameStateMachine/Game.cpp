@@ -1,10 +1,9 @@
 #include "Game.h"
-#include "GameState.h"
 
 Game::Game()
 {
 	Setup();
-    gameData->Machine.AddState(std::make_unique<GameState>(gameData));
+    gameData->Machine.AddState(std::make_unique<SplashScreenState>(gameData));
 }
 
 void Game::Run()

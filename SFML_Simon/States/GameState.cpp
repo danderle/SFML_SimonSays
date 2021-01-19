@@ -8,10 +8,6 @@ GameState::GameState(std::shared_ptr<GameData> _gameData)
     field.PressToPlay();
 }
 
-void GameState::Init()
-{
-}
-
 void GameState::HandleInput()
 {
 }
