@@ -1,14 +1,12 @@
 #pragma once
 #include "IState.h"
-#include "GameOverState.h"
 #include "GameData.h"
 #include "Field.h"
-#include "Pattern.h"
 
-class GameState : public IState
+class GameOverState : public IState
 {
 public:
-	GameState(std::shared_ptr<GameData> _gameData);
+	GameOverState(std::shared_ptr<GameData> _gameData, Field& _field, const unsigned int score);
 
 	void HandleInput() override;
 	void HandleInput(const sf::Event& event) override;
@@ -19,7 +17,10 @@ public:
 
 private:
 	std::shared_ptr<GameData> gameData;
-	Field field;
-	Pattern pattern;
+	Field& field;
+
+	sf::Text text;
+	sf::Font font;
+
 };
 

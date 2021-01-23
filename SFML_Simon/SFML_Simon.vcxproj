@@ -30,6 +30,7 @@
     <ClCompile Include="GUI\Text.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pattern.cpp" />
+    <ClCompile Include="States\GameOverState.cpp" />
     <ClCompile Include="States\GameState.cpp" />
     <ClCompile Include="States\SplashScreenState.cpp" />
   </ItemGroup>
@@ -45,6 +46,7 @@
     <ClInclude Include="GUI\RoundedRectangleShape.h" />
     <ClInclude Include="GUI\Text.h" />
     <ClInclude Include="Pattern.h" />
+    <ClInclude Include="States\GameOverState.h" />
     <ClInclude Include="States\GameState.h" />
     <ClInclude Include="States\IState.h" />
     <ClInclude Include="States\SplashScreenState.h" />

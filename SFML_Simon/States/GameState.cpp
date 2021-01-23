@@ -45,7 +45,7 @@ void GameState::HandleInput(const sf::Event& event)
 
 void GameState::Update(float dt)
 {
-    adding = field.IsMathchedSequence() && !field.IsSomeButtonPulsing();
+    bool adding = field.IsMathchedSequence() && !field.IsSomeButtonPulsing();
     if (adding)
     {
         pattern.Add();
@@ -53,6 +53,10 @@ void GameState::Update(float dt)
         adding = false;
     }
     field.RunSequence();
+    if (field.IsGameOVer())
+    {
+        gameData->Machine.AddState(std::make_unique<GameOverState>(gameData, field, pattern.GetLength()-1), false);
+    }
     field.Update(dt);
 }
 

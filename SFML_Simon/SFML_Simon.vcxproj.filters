@@ -51,6 +51,9 @@
     <ClCompile Include="States\SplashScreenState.cpp">
       <Filter>States</Filter>
     </ClCompile>
+    <ClCompile Include="States\GameOverState.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\Button.h">
@@ -88,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="GameStateMachine\GameData.h">
       <Filter>GameStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="States\GameOverState.h">
+      <Filter>States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
