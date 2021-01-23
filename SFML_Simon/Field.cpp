@@ -35,6 +35,11 @@ const bool Field::CenterIsPressed(const sf::Vector2i mousePosition) const
     return fieldCenter.Contains(sf::Vector2f(mousePosition));
 }
 
+const bool Field::IsGameOVer() const
+{
+    return fieldCenter.GetState() == State::GameOver;
+}
+
 
 const bool Field::IsInBounds(const sf::Vector2f mousePosition) const
 {
@@ -49,7 +54,7 @@ void Field::PressToPlay()
 {
     assert(buttons.size() > 0);
     buttons[0].StartContinousPulse();
-    fieldCenter.SetTurn(Turn::PressToStart);
+    fieldCenter.SetState(State::PressToStart);
 }
 
 void Field::RunSequence()
@@ -70,7 +75,7 @@ void Field::RunSequence()
             runSequence = false;
             enteringSequence = true;
             sequenceIndex = 0;
-            fieldCenter.SetTurn(Turn::PleaseRepeat);
+            fieldCenter.SetState(State::PleaseRepeat);
         }
     }
     //start button pulse
@@ -87,7 +92,7 @@ void Field::SetSequence(const std::vector<unsigned int>& seq)
     runSequence = true;
     matchedSequence = false;
     sequenceIndex = 0;
-    fieldCenter.SetTurn(Turn::SimonSays);
+    fieldCenter.SetState(State::SimonSays);
     ResetAllButtons();
 }
 
@@ -134,9 +139,9 @@ void Field::EnterSequence(const sf::Vector2i mousePosition)
                 {
                     btn.StartPulse();
                 }
+                fieldCenter.SetState(State::GameOver);
                 enteringSequence = false;
                 isGameStarted = false;
-                PressToPlay();
             }
             break;
         }
@@ -168,6 +173,7 @@ void Field::Draw(sf::RenderWindow& window)
 
 void Field::Update(const float dt)
 {
+    fieldCenter.ColorTransition(dt);
     for (auto& button : buttons)
     {
         button.ColorTransition(dt);

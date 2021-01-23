@@ -15,6 +15,7 @@ public:
 	const bool IsGameStarted() const;
 	const bool IsSomeButtonPulsing() const;
 	const bool CenterIsPressed(const sf::Vector2i mousePosition) const;
+	const bool IsGameOVer() const;
 
 	/// <summary>
 	/// Calcualates the distance between the mouse position and the center of the field
