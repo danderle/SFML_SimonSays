@@ -24,6 +24,8 @@ public:
 	/// <returns></returns>
 	const std::vector<unsigned int>& Get() const;
 
+	const unsigned int GetLength() const;
+
 private:
 	std::random_device rnd;
 	std::mt19937 rng;

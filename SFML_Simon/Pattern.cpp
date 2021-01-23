@@ -31,3 +31,8 @@ const std::vector<unsigned int>& Pattern::Get() const
 {
 	return sequence;
 }
+
+const unsigned int Pattern::GetLength() const
+{
+	return sequence.size();
+}
