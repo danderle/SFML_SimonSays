@@ -4,6 +4,7 @@ Game::Game()
 {
 	Setup();
     gameData->Machine.AddState(std::make_unique<SplashScreenState>(gameData));
+    gameData->Machine.ProcessStateChanges();
 }
 
 void Game::Run()
