@@ -2,6 +2,7 @@
 #include "IState.h"
 #include "GameData.h"
 #include "Field.h"
+#include "Text.h"
 
 class GameOverState : public IState
 {
@@ -19,8 +20,9 @@ private:
 	std::shared_ptr<GameData> gameData;
 	Field& field;
 
-	sf::Text text;
-	sf::Font font;
-
+	Text scoreLabelText;
+	Text scoreText;
+	static constexpr unsigned int characterSize = 50;
+	static constexpr float margin = 10.f;
 };
 
