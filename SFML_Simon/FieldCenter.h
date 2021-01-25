@@ -28,6 +28,8 @@ private:
 	void Blink();
 	void StopBlink();
 	void CenterText();
+	void SetRgbMin(sf::Uint8 r, sf::Uint8 g, sf::Uint16 b);
+	void SetRgbMax(sf::Uint8 r, sf::Uint8 g, sf::Uint16 b);
 	void SetTextColor(const sf::Color color);
 	void SetTextOutline(const sf::Color color, const float thickness);
 	void SetupCircle(const sf::Vector2f windowSize);
@@ -38,7 +40,6 @@ private:
 private:
 	sf::CircleShape circle;
 	sf::Vector2f centerPoint;
-	sf::Color defaultColor;
 	sf::Uint8 rMin;
 	sf::Uint8 gMin;
 	sf::Uint8 bMin;
@@ -56,6 +57,7 @@ private:
 	float colortimePassed = 0;
 	float toggletimePassed = 0;
 
+	const sf::Color defaultColor = { 192,192,192 };
 	static constexpr float toggleTransitionTimeout = 2.f;
 	static constexpr float colorTransitionTimeout = 0.1f;
 	static constexpr float circleRadius = 98.f;

@@ -122,6 +122,20 @@ void FieldCenter::CenterText()
 	secondLine.setPosition(centerPoint.x, centerPoint.y + firstLine.GetHeight() * 3 / 4);
 }
 
+void FieldCenter::SetRgbMin(sf::Uint8 r, sf::Uint8 g, sf::Uint16 b)
+{
+	rMin = r;
+	gMin = g;
+	bMin = b;
+}
+
+void FieldCenter::SetRgbMax(sf::Uint8 r, sf::Uint8 g, sf::Uint16 b)
+{
+	rMax = r;
+	gMax = g;
+	bMax = b;
+}
+
 void FieldCenter::SetTextColor(const sf::Color color)
 {
 	firstLine.SetColor(color);
@@ -140,9 +154,9 @@ void FieldCenter::SetupCircle(const sf::Vector2f windowSize)
 {
 	circle.setOrigin(circle.getRadius(), circle.getRadius());
 	circle.setPosition(centerPoint);
-	circle.setFillColor({ 192,192,192 });
-	rMin = gMin = bMin = 192;
-	rMax = gMax = bMax = 255;
+	circle.setFillColor(defaultColor);
+	SetRgbMin(defaultColor.r, defaultColor.g, defaultColor.b);
+	SetRgbMax(sf::Color::White.r, sf::Color::White.g, sf::Color::White.b);
 
 	circle.setOutlineThickness(circleOutlineThickness);
 	circle.setOutlineColor(outlineColor);
