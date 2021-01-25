@@ -194,27 +194,27 @@ void Field::InitializeButtons(const sf::Vector2f& windowSize)
 
     Button buttonR(buttonSize, buttonSize, windowSize.x / 2 - buttonSize / 2, windowSize.y / 2 - buttonSize / 2);
     buttonR.SetColor(sf::Color::Red);
-    buttonR.SetMaxRGB(255, 205, 205);
+    buttonR.SetMaxRGB(255, 255, 255);
     buttonR.SetMinRGB(255, 0, 0);
     buttonR.LoadSound("Resources\\Sounds\\button1.wav");
     buttonR.Rotate(-90.f);
 
     Button buttonG(buttonSize, buttonSize, windowSize.x / 2 + buttonSize / 2, windowSize.y / 2 - buttonSize / 2);
     buttonG.SetColor(sf::Color::Green);
-    buttonG.SetMaxRGB(205, 255, 205);
+    buttonG.SetMaxRGB(205, 255, 255);
     buttonG.SetMinRGB(0, 255, 0);
     buttonG.LoadSound("Resources\\Sounds\\button2.wav");
 
     Button buttonB(buttonSize, buttonSize, windowSize.x / 2 + buttonSize / 2, windowSize.y / 2 + buttonSize / 2);
     buttonB.SetColor(sf::Color::Blue);
-    buttonB.SetMaxRGB(205, 205, 255);
+    buttonB.SetMaxRGB(255, 255, 255);
     buttonB.SetMinRGB(0, 0, 255);
     buttonB.LoadSound("Resources\\Sounds\\button3.wav");
     buttonB.Rotate(90.f);
 
     Button buttonY(buttonSize, buttonSize, windowSize.x / 2 - buttonSize / 2, windowSize.y / 2 + buttonSize / 2);
     buttonY.SetColor(sf::Color::Yellow);
-    buttonY.SetMaxRGB(255, 255, 205);
+    buttonY.SetMaxRGB(255, 255, 255);
     buttonY.SetMinRGB(255, 255, 0);
     buttonY.LoadSound("Resources\\Sounds\\button4.wav");
     buttonY.Rotate(180.f);
