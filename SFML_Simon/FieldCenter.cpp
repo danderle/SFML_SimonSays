@@ -118,8 +118,8 @@ void FieldCenter::CenterText()
 {
 	firstLine.SetOriginToCenter();
 	secondLine.SetOriginToCenter();
-	firstLine.SetPosition(centerPoint.x, centerPoint.y - firstLine.GetHeight() * 3 / 4);
-	secondLine.SetPosition(centerPoint.x, centerPoint.y + firstLine.GetHeight() * 3 / 4);
+	firstLine.setPosition(centerPoint.x, centerPoint.y - firstLine.GetHeight() * 3 / 4);
+	secondLine.setPosition(centerPoint.x, centerPoint.y + firstLine.GetHeight() * 3 / 4);
 }
 
 void FieldCenter::SetTextColor(const sf::Color color)
@@ -154,8 +154,8 @@ void FieldCenter::SetupTexts(const sf::Vector2f windowSize)
 	secondLine.SetString("to start");
 	firstLine.SetOriginToCenter();
 	secondLine.SetOriginToCenter();
-	firstLine.SetPosition(windowSize.x / 2, windowSize.y / 2 - firstLine.GetHeight() * 3/4);
-	secondLine.SetPosition(windowSize.x / 2, windowSize.y / 2 + secondLine.GetHeight() * 3/4);
+	firstLine.setPosition(windowSize.x / 2, windowSize.y / 2 - firstLine.GetHeight() * 3/4);
+	secondLine.setPosition(windowSize.x / 2, windowSize.y / 2 + secondLine.GetHeight() * 3/4);
 	SetTextColor(pressStartColor);
 	SetTextOutline(outlineColor, textOutlineThickness);
 }
