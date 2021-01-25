@@ -77,18 +77,21 @@ void Button::SetHover(const bool isHovering)
 	hover = isHovering;
 }
 
-void Button::StartPulse()
+void Button::StartPulse(const bool playSound)
 {
 	isPulsing = true;
 	isFinished = false;
 	increaseRgb = true;
-	PlaySound();
+	if(playSound)
+	{
+		PlaySound();
+	}
 }
 
 void Button::StartContinousPulse()
 {
 	continousPulse = true;
-	StartPulse();
+	StartPulse(false);
 }
 
 void Button::ColorTransition(const float dt)

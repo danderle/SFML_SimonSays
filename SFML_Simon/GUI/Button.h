@@ -47,7 +47,7 @@ public:
 
 	void SetHover(const bool isHovering);
 
-	void StartPulse();
+	void StartPulse(const bool playSound = true);
 	void StartContinousPulse();
 
 	/// <summary>
