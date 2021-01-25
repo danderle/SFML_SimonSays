@@ -32,7 +32,7 @@ public:
 	/// <summary>
 	/// Show the pattern sequence to the user to be repeated
 	/// </summary>
-	void RunSequence();
+	void RunSequence(const float dt);
 
 	/// <summary>
 	/// Sets the current pattern sequence
@@ -69,15 +69,18 @@ private:
 	void InitializeButtons(const sf::Vector2f& windowSize);
 
 private:
-	FieldCenter fieldCenter;
 	sf::CircleShape outerBounds;
+	FieldCenter fieldCenter;
 	Text toptext;
 	std::vector<Button> buttons;
 	std::vector<unsigned int> sequence;
+
 	bool runSequence = false;
 	bool enteringSequence = false;
 	bool matchedSequence = false;
 	bool isGameStarted = false;
 	unsigned int sequenceIndex = 0;
+	float turnSwitchTime = 0.f;
+	static constexpr float turnSwitchTimeOut = 0.8f;
 };
 

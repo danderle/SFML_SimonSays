@@ -52,7 +52,7 @@ void GameState::Update(float dt)
         field.SetSequence(pattern.Get());
         adding = false;
     }
-    field.RunSequence();
+    field.RunSequence(dt);
     if (field.IsGameOVer())
     {
         gameData->Machine.AddState(std::make_unique<GameOverState>(gameData, field, pattern.GetLength()-1), false);

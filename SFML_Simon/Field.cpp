@@ -19,7 +19,7 @@ const bool Field::IsGameStarted() const
 const bool Field::IsSomeButtonPulsing() const
 {
     bool stillPulsing = false;
-    for (auto button : buttons)
+    for (const auto& button : buttons)
     {
         stillPulsing = button.IsPulsing();
         if (stillPulsing)
@@ -43,7 +43,7 @@ const bool Field::IsGameOVer() const
 
 const bool Field::IsInBounds(const sf::Vector2f mousePosition) const
 {
-    auto outerBoundsCenter = outerBounds.getPosition();
+    const auto& outerBoundsCenter = outerBounds.getPosition();
     auto x = mousePosition.x - outerBoundsCenter.x;
     auto y = mousePosition.y - outerBoundsCenter.y;
     auto distanceToCenter = sqrt((x * x) + (y * y));
@@ -57,12 +57,18 @@ void Field::PressToPlay()
     fieldCenter.SetState(State::PressToStart);
 }
 
-void Field::RunSequence()
+void Field::RunSequence(const float dt)
 {
     if (!runSequence)
     {
         return;
     }
+    turnSwitchTime += dt;
+    if (turnSwitchTime < turnSwitchTimeOut)
+    {
+        return;
+    }
+
     auto& button = buttons[sequence[sequenceIndex]];
     //if button is finished pulsing, increase sequence index
     if (button.IsFinished())
@@ -94,6 +100,7 @@ void Field::SetSequence(const std::vector<unsigned int>& seq)
     sequenceIndex = 0;
     fieldCenter.SetState(State::SimonSays);
     ResetAllButtons();
+    turnSwitchTime = 0;
 }
 
 const bool Field::StartButtonPressed(const sf::Vector2i mousePosition)
