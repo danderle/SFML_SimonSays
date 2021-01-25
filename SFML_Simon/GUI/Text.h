@@ -1,15 +1,15 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 
-class Text
+class Text : public sf::Text
 {
 public:
 	Text();
+	Text(const std::string& _text);
 
 	float GetHeight() const;
+	float GetWidth() const;
 
-	void SetPosition(const float x, const float y);
-	void SetPosition(const sf::Vector2f position);
 	void SetColor(const sf::Color color);
 	void SetOriginToCenter();
 	void SetOutlineColor(const sf::Color color);
@@ -19,8 +19,9 @@ public:
 	void SetXposition(const float x);
 
 	void Draw(sf::RenderWindow& window);
+	
+public:
 private:
-	sf::Text text;
 	sf::Font font;
 
 	const std::string fontFilePath = "Resources\\Fonts\\Unispace-Rg.ttf";

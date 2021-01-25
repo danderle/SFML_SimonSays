@@ -6,65 +6,66 @@ Text::Text()
     {
         //Some error hadnling
     }
-    text.setFont(font);
+    setFont(font);
+}
+
+Text::Text(const std::string& _text)
+    :Text()
+{
+    setString(_text);
 }
 
 float Text::GetHeight() const
 {
-    return text.getLocalBounds().height;
+    return getLocalBounds().height;
 }
 
-void Text::SetPosition(const float x, const float y)
+float Text::GetWidth() const
 {
-    SetPosition({x,y});
-}
-
-void Text::SetPosition(const sf::Vector2f position)
-{
-    text.setPosition(position);
+    return getLocalBounds().width;;
 }
 
 void Text::SetColor(const sf::Color color)
 {
-    text.setFillColor(color);
+    setFillColor(color);
 }
 
 void Text::SetOriginToCenter()
 {
-    auto centerX = text.getLocalBounds().left + text.getGlobalBounds().width / 2;
-    auto centerY = text.getLocalBounds().top + text.getGlobalBounds().height / 2;
-    text.setOrigin(centerX, centerY);
+    auto centerX = getLocalBounds().left + getGlobalBounds().width / 2;
+    auto centerY = getLocalBounds().top + getGlobalBounds().height / 2;
+    setOrigin(centerX, centerY);
 }
 
 void Text::SetOutlineColor(const sf::Color color)
 {
-    text.setOutlineColor(color);
+    setOutlineColor(color);
 }
 
 void Text::SetOutlineThickness(const float thickness)
 {
-    text.setOutlineThickness(thickness);
-    auto f = text.getOutlineThickness();
+    setOutlineThickness(thickness);
+    auto f = getOutlineThickness();
 }
 
 void Text::SetOriginToTopLeft()
 {
-    auto leftX = text.getLocalBounds().left;
-    auto topY = text.getLocalBounds().top;
-    text.setOrigin(leftX, topY);
+    auto leftX = getLocalBounds().left;
+    auto topY = getLocalBounds().top;
+    setOrigin(leftX, topY);
 }
 
 void Text::SetString(const std::string& str)
 {
-    text.setString(str);
+    setString(str);
 }
 
 void Text::SetXposition(const float x)
 {
-    text.setPosition(x, text.getPosition().y);
+    setPosition(x, getPosition().y);
 }
 
 void Text::Draw(sf::RenderWindow& window)
 {
-    window.draw(text);
+    window.draw(*this);
 }
