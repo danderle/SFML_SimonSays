@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="FieldCenter.cpp" />
     <ClCompile Include="Field.cpp" />
+    <ClCompile Include="FileHandler.cpp" />
     <ClCompile Include="GameStateMachine\Game.cpp" />
     <ClCompile Include="GameStateMachine\InputManager.cpp" />
     <ClCompile Include="GameStateMachine\StateMachine.cpp" />
@@ -37,6 +38,7 @@
   <ItemGroup>
     <ClInclude Include="FieldCenter.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="FileHandler.h" />
     <ClInclude Include="GameStateMachine\Game.h" />
     <ClInclude Include="GameStateMachine\GameData.h" />
     <ClInclude Include="GameStateMachine\InputManager.h" />
