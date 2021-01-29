@@ -15,7 +15,6 @@ public:
 	void SetOutlineColor(const sf::Color color);
 	void SetOutlineThickness(const float thickness);
 	void SetOriginToTopLeft();
-	void SetString(const std::string & str);
 	void SetXposition(const float x);
 
 	void Draw(sf::RenderWindow& window);

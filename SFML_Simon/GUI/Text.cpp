@@ -55,11 +55,6 @@ void Text::SetOriginToTopLeft()
     setOrigin(leftX, topY);
 }
 
-void Text::SetString(const std::string& str)
-{
-    setString(str);
-}
-
 void Text::SetXposition(const float x)
 {
     setPosition(x, getPosition().y);

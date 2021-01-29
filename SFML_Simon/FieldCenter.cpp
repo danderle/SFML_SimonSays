@@ -27,30 +27,30 @@ void FieldCenter::SetState(const State state)
 	switch (currentState)
 	{
 	case State::PressToStart:
-		firstLine.SetString("Press red");
-		secondLine.SetString("to start");
+		firstLine.setString("Press red");
+		secondLine.setString("to start");
 		SetTextColor(pressStartColor);
 		StopBlink();
 		break;
 	case State::SimonSays:
-		firstLine.SetString("Simon");
-		secondLine.SetString("says");
+		firstLine.setString("Simon");
+		secondLine.setString("says");
 		SetTextColor(simonsSaysColor);
 		break;
 	case State::PleaseRepeat:
-		firstLine.SetString("Please");
-		secondLine.SetString("repeat");
+		firstLine.setString("Please");
+		secondLine.setString("repeat");
 		SetTextColor(pleaseRepeatColor);
 		break;
 	case State::GameOver:
-		firstLine.SetString("Game");
-		secondLine.SetString("over");
+		firstLine.setString("Game");
+		secondLine.setString("over");
 		SetTextColor(gameOverColor);
 		Blink();
 		break;
 	case State::PressToContinue:
-		firstLine.SetString("Press to");
-		secondLine.SetString("continue");
+		firstLine.setString("Press to");
+		secondLine.setString("continue");
 		SetTextColor(gameOverColor);
 		Blink();
 		break;
@@ -122,14 +122,14 @@ void FieldCenter::CenterText()
 	secondLine.setPosition(centerPoint.x, centerPoint.y + firstLine.GetHeight() * 3 / 4);
 }
 
-void FieldCenter::SetRgbMin(sf::Uint8 r, sf::Uint8 g, sf::Uint16 b)
+void FieldCenter::SetRgbMin(sf::Uint8 r, sf::Uint8 g, sf::Uint8 b)
 {
 	rMin = r;
 	gMin = g;
 	bMin = b;
 }
 
-void FieldCenter::SetRgbMax(sf::Uint8 r, sf::Uint8 g, sf::Uint16 b)
+void FieldCenter::SetRgbMax(sf::Uint8 r, sf::Uint8 g, sf::Uint8 b)
 {
 	rMax = r;
 	gMax = g;
@@ -164,8 +164,8 @@ void FieldCenter::SetupCircle(const sf::Vector2f windowSize)
 
 void FieldCenter::SetupTexts(const sf::Vector2f windowSize)
 {
-	firstLine.SetString("Press red");
-	secondLine.SetString("to start");
+	firstLine.setString("Press red");
+	secondLine.setString("to start");
 	firstLine.SetOriginToCenter();
 	secondLine.SetOriginToCenter();
 	firstLine.setPosition(windowSize.x / 2, windowSize.y / 2 - firstLine.GetHeight() * 3/4);

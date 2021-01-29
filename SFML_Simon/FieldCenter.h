@@ -28,8 +28,8 @@ private:
 	void Blink();
 	void StopBlink();
 	void CenterText();
-	void SetRgbMin(sf::Uint8 r, sf::Uint8 g, sf::Uint16 b);
-	void SetRgbMax(sf::Uint8 r, sf::Uint8 g, sf::Uint16 b);
+	void SetRgbMin(sf::Uint8 r, sf::Uint8 g, sf::Uint8 b);
+	void SetRgbMax(sf::Uint8 r, sf::Uint8 g, sf::Uint8 b);
 	void SetTextColor(const sf::Color color);
 	void SetTextOutline(const sf::Color color, const float thickness);
 	void SetupCircle(const sf::Vector2f windowSize);
