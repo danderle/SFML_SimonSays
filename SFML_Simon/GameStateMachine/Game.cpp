@@ -45,5 +45,5 @@ void Game::Setup()
     //Set window position relative to desktop size
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
     gameData->Window.setPosition({ (int)desktop.width / 2 - (int)gameData->Window.getSize().x / 2, 0 });
-
+    FileHandler::CreateAppDataDirectory();
 }

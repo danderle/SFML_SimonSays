@@ -4,6 +4,7 @@
 #include "SFML/Graphics.hpp"
 #include "GameData.h"
 #include "SplashScreenState.h"
+#include "FileHandler.h"
 
 /// <summary>
 /// Game class is responsible for initalization and running the game loop
