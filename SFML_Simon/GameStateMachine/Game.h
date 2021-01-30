@@ -28,5 +28,7 @@ private:
 private:
 	sf::Clock clock;
 	std::shared_ptr<GameData> gameData = std::make_shared<GameData>();
+	sf::Image icon;
+	const std::string iconFilePath = "Resources\\Images\\SimonSaysLogo_32x32x.png";
 };
 

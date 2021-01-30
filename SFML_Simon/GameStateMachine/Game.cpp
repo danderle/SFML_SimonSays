@@ -45,5 +45,11 @@ void Game::Setup()
     //Set window position relative to desktop size
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
     gameData->Window.setPosition({ (int)desktop.width / 2 - (int)gameData->Window.getSize().x / 2, 0 });
+    
+    //Set icon top left and taskbar
+    icon.loadFromFile(iconFilePath);
+    sf::Vector2u iconSize = icon.getSize();
+    gameData->Window.setIcon(iconSize.x, iconSize.y, icon.getPixelsPtr());
+
     FileHandler::CreateAppDataDirectory();
 }
