@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SFML_Simon", "SFML_Simon.vcxproj", "{C26D539F-D1E8-4C35-9C33-157DB4499AD6}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SimonSays.Installer", "..\SimonSays.Installer\SimonSays.Installer.vdproj", "{28F7D362-8518-4D89-A7D1-2B3C87221B67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{C26D539F-D1E8-4C35-9C33-157DB4499AD6}.Release|x64.Build.0 = Release|x64
 		{C26D539F-D1E8-4C35-9C33-157DB4499AD6}.Release|x86.ActiveCfg = Release|Win32
 		{C26D539F-D1E8-4C35-9C33-157DB4499AD6}.Release|x86.Build.0 = Release|Win32
+		{28F7D362-8518-4D89-A7D1-2B3C87221B67}.Debug|x64.ActiveCfg = Debug
+		{28F7D362-8518-4D89-A7D1-2B3C87221B67}.Debug|x86.ActiveCfg = Debug
+		{28F7D362-8518-4D89-A7D1-2B3C87221B67}.Release|x64.ActiveCfg = Release
+		{28F7D362-8518-4D89-A7D1-2B3C87221B67}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

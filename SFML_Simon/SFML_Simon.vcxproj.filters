@@ -112,4 +112,7 @@
       <Filter>Resources\Sounds</Filter>
     </Media>
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
 </Project>
