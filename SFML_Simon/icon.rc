@@ -1,0 +1,4 @@
+#pragma once
+// Icon Resource Definition
+#define MAIN_ICON                       102
+MAIN_ICON               ICON                    "Resources\\Images\\icon.ico"
